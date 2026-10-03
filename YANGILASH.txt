@@ -1,0 +1,47 @@
+KINO BOT — TUGMALAR JAVOBINI TEZLASHTIRISH
+
+O'rnatish:
+1. Ishlayotgan bot terminalida Ctrl+C bosing.
+2. Eski kino_bot papkangizning zaxira nusxasini oling.
+3. ZIP ichidagi kino_bot papkasining fayllarini mavjud loyiha
+   papkasiga ko'chiring. Bir xil nomli kod fayllarini almashtiring.
+   Butun eski papkani o'chirmang: .env, .venv va kino_bot.db saqlansin.
+4. Avvalgi terminalda: python main.py
+   Kutubxonalar o'zgarmagan, qayta o'rnatish shart emas.
+5. Telegramda Kategoriyalar va admin menyularini sinab ko'ring.
+
+Nimalar o'zgardi:
+- Ko'p navigatsiya tugmalarida callback tasdig'i amaldan oldin yuboriladi.
+  Botni to'xtatish/yoqish va tekshiruv natijalaridagi alertlar saqlangan.
+- Kanal a'zoligi ko'pi bilan 4 ta parallel so'rovda tekshiriladi.
+  Har so'rovga 8 soniya chegarasi qo'yilgan. Xato yoki vaqt tugashida
+  foydalanuvchiga kino olish ruxsati berilmaydi. Obuna keshlanmaydi.
+- Foydalanuvchi ro'yxatga olingach baza yozuvi darhol commit qilinadi;
+  Telegram javobini kutish davomida ro'yxatga olish yozuv qulfi qolmaydi.
+- Foydalanuvchini ID orqali tekshirishda uning barcha yuborish tarixi
+  ortiqcha yuklanmaydi.
+- Rejalashtirilgan tarqatishda har bir yuborish logi alohida commit qilinadi;
+  butun tarqatish davomida SQLite yozuv qulfi ushlab turilmaydi.
+- UPDATE, DB_REGISTER va API vaqt o'lchovlari terminal va bot.log ga yoziladi.
+  Yangi o'lchovlar token, xabar matni va API URL manzilini yozmaydi.
+
+Agar kechikish qolsa:
+Tugmani bir marta bosing va shu paytdagi UPDATE, DB_REGISTER, API
+yozuvlarini yuboring. Masalan:
+API method=SendMessage duration=12.300s result=ok
+Bu misol Telegram API so'rovi 12.3 soniya olganini bildiradi.
+GetUpdates long polling kutishi bu o'lchovlarga kiritilmagan.
+UPDATE — bot update olgandan keyingi ishlov vaqti; Telegramdan botga
+kelguncha ketgan vaqtni o'lchamaydi.
+
+Cheklov:
+10–20 soniyalik kechikishning aynan qaysi qismi tarmoqdan ekanligi
+foydalanuvchi kompyuterida yangi loglar bilan aniqlanadi.
+Jonli Telegram orqali tezlik kafolatlanmaydi; tuzatishlar oflayn tekshirilgan.
+
+Oflayn sinov:
+python -m unittest discover -s tests -v
+Testlar haqiqiy Telegramga xabar yubormaydi, vaqtinchalik baza ishlatadi.
+
+Arxivda .env, .venv va foydalanuvchilar bazasi yo'q.
+Token oldingi rasm/arxivda ko'ringan bo'lsa, BotFather orqali yangilang.

@@ -1,0 +1,47 @@
+MAJBURIY OBUNA TUZATILDI
+
+Oldingi holat:
+- Obuna faqat kino yuborishda tekshirilgan.
+- /start va kategoriyalar obunasiz ochilgan.
+- Admin akkaunti obuna tekshiruvidan ozod bo'lgan.
+
+Yangi holat:
+- Oddiy foydalanuvchining /start, kategoriya, sahifalash, kino kodi
+  va eski inline tugmalaridagi harakati markaziy middleware orqali tekshiriladi.
+- Barcha faol majburiy kanallarga a'zolik talab qilinadi.
+- A'zolik keshlanmaydi: kanaldan chiqqan foydalanuvchi keyingi amalda to'xtatiladi.
+- Telegram xatosi yoki timeout a'zo emaslik xabaridan alohida ko'rsatiladi.
+  Tasdiqsiz kino berilmaydi.
+- Kino kodi obunadan oldin saqlanadi; tasdiqdan so'ng kino yuboriladi.
+  Muvaffaqiyatli yuborilgandan keyin kutilayotgan kod tozalanadi.
+- Tasdiqlashdan keyin asosiy menyu qayta chiqadi.
+- Admin akkaunti hamda admin bilan bog'lanish yo'li ochiq qoladi.
+- Ro'yxatda majburiy kanallar bo'lmasa, obuna sharti qo'llanmaydi.
+- Arxiv kanalini sozlash majburiy obuna kanalini avtomatik qo'shmaydi.
+
+O'RNATISH:
+1. Ishlayotgan botni Ctrl+C bilan to'xtating.
+2. Eski kino_bot papkasidan zaxira nusxa oling.
+3. ZIP ichidagi kino_bot fayllarini mavjud papkaga ko'chirib almashtiring.
+   .env, .venv va kino_bot.db fayllarini o'chirmang.
+4. Avvalgi terminalda: python main.py
+5. /admin -> Majburiy kanallar -> Kanal qo'shish.
+   Kerakli kanal ro'yxatda bo'lsa uni qaytadan qo'shmang.
+6. Botni shu kanalda administrator qiling. To'g'ri kanal ID va
+   aynan shu kanalning amaldagi kirish havolasini ishlating.
+7. ADMIN_IDS ro'yxatida bo'lmagan boshqa akkauntdan sinang:
+   - A'zo bo'lmagan holda /start: obuna tugmalari chiqishi kerak.
+   - A'zo bo'lmay Obunani tekshirish: ruxsat berilmasligi kerak.
+   - Barcha kanallarga kirib Obunani tekshirish: menyu ochilishi kerak.
+   - Kanaldan chiqib kino kodi yuborish: yana obuna talab qilinishi kerak.
+   Kirish so'rovi yuborishning o'zi a'zolik emas; tasdiqlanishini kuting.
+
+Tekshirish:
+10 ta oflayn test o'tdi, jumladan haqiqiy aiogram Dispatcher va
+vaqtinchalik SQLite bilan kirish yo'llari sinovi.
+Telegram so'rovlari sinovda taqlid qilingan; jonli kanal huquqlari va
+kompyuterdagi amaldagi baza tekshirilmagan.
+Testlarni qayta ishlatish:
+python -m unittest discover -s tests -v
+
+Arxivda shaxsiy token, .venv va ma'lumotlar bazasi yo'q.
